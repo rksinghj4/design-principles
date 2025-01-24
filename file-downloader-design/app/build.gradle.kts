@@ -50,6 +50,8 @@ android {
 }
 
 dependencies {
+    //Add my file downloader library in app
+    implementation(project(":downloaderlib"))
 
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
