@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "FileDownloaderDesign"
 include(":app")
- 
+include(":downloaderlib")
