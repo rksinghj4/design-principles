@@ -14,6 +14,7 @@ class DownloadTask(
         onStart: () -> Unit,
         onProgress: (value: Int) -> Unit = { _ -> },
         onPause: () -> Unit = {},
+        onCancel: () -> Unit = {},
         onCompleted: () -> Unit = {},
         onError: (error: String) -> Unit = { _ -> }
     ) {
@@ -26,8 +27,8 @@ class DownloadTask(
             httpClient.connect(req)
 
             // simulate read data from internet
-            for (i in 1..50) {
-                delay(100)
+            for (i in 1..10) {
+                delay(500)
                 onProgress(i)
             }
 

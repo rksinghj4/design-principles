@@ -17,9 +17,12 @@ class DownloadRequest private constructor(
     internal var downloadedBytes: Long = 0
     internal lateinit var job: Job
     internal lateinit var onStart: () -> Unit
-    internal lateinit var onProgress: () -> Unit
-    internal lateinit var onPause: () -> Unit//Need answer: resume functionality not in Req?
+    internal lateinit var onProgress: (value: Int) -> Unit
+    internal lateinit var onPause: () -> Unit//Need answer: why resume functionality is not in Request?
+    internal lateinit var onResume: () -> Unit
+    internal lateinit var onCancel: () -> Unit
     internal lateinit var onCompleted: () -> Unit
+    internal lateinit var onCancelAll: () -> Unit
     internal lateinit var onError: (error: String) -> Unit
 
     //There 3 parameters are mandatory to take from user
@@ -66,3 +69,4 @@ class DownloadRequest private constructor(
         }
     }
 }
+

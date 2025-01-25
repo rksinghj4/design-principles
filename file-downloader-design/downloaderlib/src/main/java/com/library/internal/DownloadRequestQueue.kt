@@ -4,14 +4,14 @@ class DownloadRequestQueue(private val dispatcher: DownloadDispatcher) {
 
     private val idRequestMap: HashMap<Int, DownloadRequest> = hashMapOf()
 
-    fun enqueue(request: DownloadRequest) {
+    fun enqueue(request: DownloadRequest): Int {
         idRequestMap[request.downloadId] = request
-        dispatcher.enqueue(request)
+        return dispatcher.enqueue(request)
     }
 
     fun pause(id: Int) {
         idRequestMap[id]?.let {
-            dispatcher.cancel(it)//For pause just cancel the job
+            dispatcher.pause(it)
         }
     }
 
@@ -23,7 +23,7 @@ class DownloadRequestQueue(private val dispatcher: DownloadDispatcher) {
 
     fun cancel(id: Int) {
         idRequestMap[id]?.let {
-            dispatcher.cancel(it)//For pause and cancel just cancel the job
+            dispatcher.cancel(it)
         }
         idRequestMap.remove(id)//Remove DownloadRequest from hashmap
     }
@@ -40,7 +40,7 @@ class DownloadRequestQueue(private val dispatcher: DownloadDispatcher) {
 
     fun cancelAll() {
         idRequestMap.clear()
-        dispatcher.cancelAll()
+        dispatcher.cancelAll(idRequestMap)
     }
 }
 
