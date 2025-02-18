@@ -14,7 +14,7 @@ class ImageLoadingApplication : Application() {
     }
 
     fun getBitMapFromPool(width: Int, height: Int): Bitmap? {
-        //Code to Check if bitmap of compatible size exist in pool
+        //TODO: Need to write code to Check if bitmap of compatible size exist in pool
 
         if (bitMapPool.size > 0) {
             return bitMapPool.get(0)

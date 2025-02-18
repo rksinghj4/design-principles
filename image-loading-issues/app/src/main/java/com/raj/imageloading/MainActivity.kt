@@ -25,12 +25,15 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.raj.imageloading.bitmapcache.decodeImageFromPath
 import com.raj.imageloading.ui.theme.ImageLoadingIssuesTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        decodeImageFromPath()
+
         setContent {
 
             ImageLoadingIssuesTheme {
