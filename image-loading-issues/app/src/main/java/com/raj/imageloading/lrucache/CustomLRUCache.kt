@@ -3,7 +3,7 @@ package com.raj.imageloading.lrucache
 class Node(
     val key: Int,
     var value: Int,
-    var prev: Node? = null,
+    var prev: Node? = null,//Doubly linked list
     var next: Node? = null
 )
 
@@ -15,7 +15,7 @@ class LRUCache(private val capacity: Int) {
      * This is the actual cache. Head and tail are used to find LRU, MRU
      * hashMap is a cacheMap
      */
-    val hashMap = HashMap<Int, Node>()
+    private val hashMap = HashMap<Int, Node>()
 
     init {
         head.next = tail
@@ -38,10 +38,10 @@ class LRUCache(private val capacity: Int) {
 
     fun put(key: Int, value: Int) {
         if (key in hashMap) {//already in cache, just update value and position(no removal)
-            val nodeTobeMovedToEnd = hashMap.getValue(key = key)
-            nodeTobeMovedToEnd.value = value//Just value is updated and moved to end
-            removeAndBreakTheLinkFromCurrentPosition(nodeTobeMovedToEnd)
-            insertAtEnd(nodeTobeMovedToEnd)//Became most recently used
+            val nodeTobeOnTail = hashMap.getValue(key = key)
+            nodeTobeOnTail.value = value//Just value is updated and moved to end
+            removeAndBreakTheLinkFromCurrentPosition(nodeTobeOnTail)
+            insertAtEnd(nodeTobeOnTail)//Became most recently used
             return
         }
         //Cache is Full, apply cache eviction policy (on cacheMap)
