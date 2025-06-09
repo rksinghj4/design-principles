@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "AppStartupAndBestPractices"
 include(":app")
- 
+include(":debugger")
+include(":no-ops-debugger")

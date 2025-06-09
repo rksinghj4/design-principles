@@ -56,4 +56,11 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    debugImplementation(project(":debugger"))
+    //Both must be different(debug vs releaseImplementation),
+    // otherwise com.raj.debugger.Debugger will give duplicate file error(multiple times)
+    releaseImplementation(project(":no-ops-debugger"))
+
+    //All debug library must have implementation for no-ops to reduce apk size.
 }

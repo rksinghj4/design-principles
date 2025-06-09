@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.raj.appstartupandbestpractices.ui.theme.AppStartupAndBestPracticesTheme
+import com.raj.debugger.Debugger
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +37,9 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
         text = "Hello $name!",
         modifier = modifier
     )
+    Debugger.log("no-ops-test", {
+        return@log "Printing from MainActivity"
+    })
 }
 
 @Preview(showBackground = true)
